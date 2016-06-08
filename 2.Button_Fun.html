@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      button{
+        color: white;
+        padding: 20px;
+        font-size: 20px;
+      }
+      .blue{
+        background-color: blue;
+      }
+      .red{
+        background-color: red;
+      }
+      .green{
+        background-color: green;
+      }
+    </style>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+  </head>
+  <body>
+  <script type="text/javascript">
+  $(document).ready(function(){
+    createButton();
+
+    function createButton(){
+      $(".wrapper").append("<button id='btn' class='blue'>Click Me!</button>");
+    }
+    $(document).keypress(function(event){
+      var keycode = (event.keyCode ? event.keyCode : event.which);
+      if(keycode == '13'){
+          createButton();
+      }
+    });
+    $(document).on('click','button', function(){
+      if($(this).attr("class")!='blue'){
+        $(this).attr("class", 'blue');
+      }
+      else{
+        $(this).attr("class", 'red');
+      }
+    })
+    $(document).on({
+        mouseenter: function () {
+          $(this).attr("style", 'background-color:green');
+        },
+        mouseleave: function () {
+          $(this).attr("style", '');
+        }
+    }, "button");
+
+  })
+  </script>
+  <div class="wrapper">
+
+  </div>
+  </body>
+</html>
